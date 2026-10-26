@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "incident": {
+      "title": "Incident",
+      "description": "Campus emergency and security incidents",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "severity": { "type": "string" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "location": { "type": "string" },
+        "description": { "type": "string" },
+        "reporter": { "type": "string" }
+      },
+      "required": ["title", "type", "severity", "status"]
+    },
+    "device_override": {
+      "title": "DeviceOverride",
+      "description": "Real-time hardware status toggles across server and mobile devices",
+      "type": "object",
+      "properties": {
+        "categoryId": { "type": "string" },
+        "itemId": { "type": "string" },
+        "status": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["categoryId", "itemId", "status"]
+    },
+    "zone_state": {
+      "title": "ZoneState",
+      "description": "Real-time state and lockdown control for campus zones",
+      "type": "object",
+      "properties": {
+        "zoneId": { "type": "string" },
+        "doorsLocked": { "type": "boolean" },
+        "status": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["zoneId", "doorsLocked"]
+    },
+    "activity_log": {
+      "title": "ActivityLog",
+      "description": "Security audit trails and operations events",
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string" },
+        "category": { "type": "string" },
+        "action": { "type": "string" },
+        "details": { "type": "string" },
+        "severity": { "type": "string" }
+      },
+      "required": ["timestamp", "action", "severity"]
+    },
+    "pa_broadcast": {
+      "title": "PABroadcast",
+      "description": "Real-time Public Address audio announcement broadcast across Web and Android devices",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "message": { "type": "string" },
+        "targetZone": { "type": "string" },
+        "sender": { "type": "string" },
+        "timestampMs": { "type": "number" },
+        "timestamp": { "type": "string" },
+        "audioBase64": { "type": "string" }
+      },
+      "required": ["id", "message", "targetZone", "timestampMs"]
+    }
+  },
+  "firestore": {
+    "/incidents/{incidentId}": {
+      "schema": "incident",
+      "description": "Collection of all campus security and safety incidents"
+    },
+    "/device_overrides/{overrideId}": {
+      "schema": "device_override",
+      "description": "Real-time device power and state overrides synchronized between server and mobile"
+    },
+    "/zone_states/{zoneId}": {
+      "schema": "zone_state",
+      "description": "Zonal lockdown and door status records"
+    },
+    "/activity_logs/{logId}": {
+      "schema": "activity_log",
+      "description": "Audit trail log records for security events"
+    },
+    "/pa_broadcasts/{broadcastId}": {
+      "schema": "pa_broadcast",
+      "description": "Real-time PA audio broadcasts transmitted to all connected Web and Android units"
+    }
+  }
+}

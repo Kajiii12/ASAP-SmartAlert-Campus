@@ -1,0 +1,11 @@
+{
+  "name": "ASAP Command Post & Mobile Safety System",
+  "description": "Campus emergency operations center and mobile response system with live cloud database sync.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
